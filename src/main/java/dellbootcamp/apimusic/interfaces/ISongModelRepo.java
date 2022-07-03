@@ -1,14 +1,9 @@
 package dellbootcamp.apimusic.interfaces;
 
 import dellbootcamp.apimusic.modeles.GenreEnum;
-import lombok.*;
 
-import javax.persistence.Entity;
-import java.math.BigInteger;
-
-
-public interface ISongModel {
-    Integer id = null;
+public interface ISongModelRepo {
+    String id = null;
     String title = "";
     String artist = "";
     GenreEnum genre = GenreEnum.RAP;

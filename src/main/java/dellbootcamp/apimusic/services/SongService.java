@@ -3,6 +3,7 @@ package dellbootcamp.apimusic.services;
 import java.util.*;
 
 import dellbootcamp.apimusic.interfaces.ISongService;
+import dellbootcamp.apimusic.interfaces.SongsRepo;
 import dellbootcamp.apimusic.modeles.SongModel;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,17 +13,16 @@ import static dellbootcamp.apimusic.modeles.Songs.songs;
 @Service
 public class SongService implements ISongService {
 
-    @PostMapping("/add")
     public void addSong(SongModel song){
         SongModel s = new SongModel(song.getTitle(),song.getArtist(),song.getGenre(),song.getLength(),song.getPrice());
         songs.add(s);
     }
-    public SongModel updateSong(SongModel song,int index){
+    public SongModel updateSong(SongModel song){
 //        return Arrays.stream(songs).findFirst().map(s->s.getId()==song.getId()?{
 //
 //        })
 
-        songs.set(index, song);
+        songs.set(song.getId(), song);
 //        for (SongModel i : songs) {
 //            if(i.getId() == song.getId()){
 //                i.setTitle(song.getTitle());
@@ -52,17 +52,18 @@ public class SongService implements ISongService {
 
         return songArtist;
     }
-    public SongModel getSongById(int id){
+    public SongModel getSongById(Integer id){
         for( SongModel s: songs){
-            if(s.getId() == id)
+            if(s.getId().equals(id))
                 return s;
         }
         return null;
     }
-    public void deleteSongById(int id) {
+    public void deleteSongById(Integer id) {
         for (SongModel s : songs) {
-            if (s.getId() == id) {
+            if (s.getId().equals(id)) {
                 songs.remove(s);
+                System.out.println("remove song in service");
             }
         }
     }

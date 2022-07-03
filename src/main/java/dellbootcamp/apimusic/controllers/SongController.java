@@ -15,7 +15,7 @@ import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/*
 @RestController
 @RequestMapping("Songs")
 public class SongController {
@@ -37,13 +37,13 @@ public class SongController {
 
 //    @PutMapping("/update")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
-    public SongModel updateSong(@RequestBody SongModel song,@PathVariable int id){
-        SongModel s = ISongService.updateSong(song, id);
+    public SongModel updateSong(@RequestBody SongModel song){
+        SongModel s = ISongService.updateSong(song);
         return s;
     }
 
     @GetMapping("/{id}")
-    public SongModel getSongById(@PathVariable int id){
+    public SongModel getSongById(@PathVariable Integer id){
         SongModel s = ISongService.getSongById(id);
         return s;
     }
@@ -69,7 +69,10 @@ public class SongController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteSongById(@PathVariable int id) {
+    public void deleteSongById(@PathVariable Integer id) {
         ISongService.deleteSongById(id);
+        System.out.println("remove song in controller");
     }
-}
+
+
+}*/
